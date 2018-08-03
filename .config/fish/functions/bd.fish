@@ -1,0 +1,1 @@
+/Users/ryo/.config/fisherman/bd/functions/bd.fish
