@@ -1,5 +1,24 @@
+BASE = `pwd`
+LINK = ln -sf
+
 all:
 
-install:
-	test -e ~/.config/fish || ln -sf ~/work/dotfiles/.config/fish ~/.config/
-	test -e ~/.config/htop || ln -sf ~/work/dotfiles/.config/htop ~/.config/
+install: install-configs install-files
+
+install-configs:
+	$(LINK) $(BASE)/.config/fish ~/.config/
+	$(LINK) $(BASE)/.config/htop ~/.config/
+
+install-files:
+	$(LINK) $(BASE)/.colordiffrc ~
+	$(LINK) $(BASE)/.editorconfig ~
+	$(LINK) $(BASE)/.fd2rc ~
+	$(LINK) $(BASE)/.gitconfig ~
+	$(LINK) $(BASE)/.iex.exs ~
+	$(LINK) $(BASE)/.init.ee ~
+	$(LINK) $(BASE)/.mytoprc ~
+	$(LINK) $(BASE)/.proverc ~
+	$(LINK) $(BASE)/.pryrc ~
+	$(LINK) $(BASE)/.sbtrc ~
+	$(LINK) $(BASE)/.tigrc ~
+	$(LINK) $(BASE)/.toprc ~

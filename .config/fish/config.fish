@@ -25,7 +25,7 @@ function cd
   dir
 end
 
-### home
+# home
 
 function sethome
 	set -g MYHOME (pwd)
@@ -33,4 +33,14 @@ end
 
 function gohome
 	cd "$MYHOME"
+end
+
+# gcs
+set GCS_DIR /usr/local/google-cloud-sdk
+if [ -f "$GCS_DIR/path.fish.inc" ]
+  if type source > /dev/null
+    source "$GCS_DIR/path.fish.inc"
+  else
+    . "$GCS_DIR/path.fish.inc"
+  end
 end

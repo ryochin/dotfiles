@@ -1,0 +1,26 @@
+# tigrc for 2.x
+
+set main-view = \
+	line-number:yes,interval=10 \
+	id:width=8 \
+	author:email-user \
+	date \
+	commit-title:graph=yes,refs=yes
+
+#set blame-view = \
+#	line-number:yes,interval=10 \
+#	date \
+#	author \
+#	id
+
+set pager-view = line-number:yes,interval=10 text
+
+set commit-order = date
+#set line-graphics = utf-8
+set split-view-height = 75%
+set diff-context = 4
+set vertical-split = no
+set tab-size = 4
+set show-changes = no
+set diff-options = -m --first-parent
+set reference-format = (branch) [tag]

@@ -1,0 +1,85 @@
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	templatedir = ~/.git-templates
+
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = blue reverse
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+
+[color]
+	ui = true
+
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = cot -w
+	pager = less -x4
+
+[branch]
+	autosetupmerge = true
+
+[alias]
+	au = add -u
+	st = status
+	ci = commit -a
+	br = branch
+	co = checkout
+	di = diff
+	dw = diff -w --word-diff=color
+	lg = log -p
+	bi = bisect
+	wt = worktree
+
+	undo = reset --soft HEAD^
+	push-f = push --force-with-lease
+	stash-all = stash save --include-untracked
+	ag = "!git ls-files | xargs ag --pager=\"less -F -R\" --nogroup --color-match=0\\;31 --color-path=0\\;0 --no-numbers"
+	clone-one = clone --depth=1
+
+[push]
+	default = current
+
+[mergetool]
+	keepBackup = true
+
+[merge]
+	ff = false
+
+[grep]
+	lineNumber = true
+
+[diff]
+	algorithm = patience
+	compactionHeuristic = true
+
+[pager]
+	log  = diff-highlight | less -x4
+	show = diff-highlight | less -x4
+	diff = diff-highlight | less -x4
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[gpg]
+	program = gpg1

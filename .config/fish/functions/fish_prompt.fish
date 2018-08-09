@@ -27,7 +27,7 @@ function fish_prompt --description 'Write out the prompt'
   end
 
   printf "%s%s%s %s%s ' %s%s \f\r %s%s < " \
-    "$__fish_color_prompt_hostname" (prompt_hostname) "$__fish_prompt_normal" \
+    "$__fish_color_prompt_hostname" (hostname -s) "$__fish_prompt_normal" \
     "$__fish_color_prompt_username" $USER \
     "$__fish_color_prompt_current_path" "$PWD" \
     $status_face \
