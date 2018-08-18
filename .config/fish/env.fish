@@ -1,22 +1,25 @@
-# set -x LANG ja_JP.UTF-8
+# basics
 set -x LANG en_US.UTF-8
 set -x EDITOR ee
 set -x PAGER lv
 
-export LD_LIBRARY_PATH=/usr/local/lib
-export LIBRARY_PATH=/usr/local/lib
+set -x LD_LIBRARY_PATH /usr/local/lib
+set -x LIBRARY_PATH /usr/local/lib
 
 # surpress perl warnings
 export PERL_BADLANG=0
 export PERLDOC_PAGER={$PAGER}
 
 # path
-set -x fish_user_paths $HOME/bin $fish_user_paths
+if test -e $HOME/bin
+  set -x fish_user_paths $HOME/bin $fish_user_paths
+end
 
 # *env
 which rbenv > /dev/null 2>&1; and rbenv init - | source
-which pyenv > /dev/null 2>&1; and pyenv init - | source
+# which pyenv > /dev/null 2>&1; and pyenv init - | source
 which plenv > /dev/null 2>&1; and plenv init - | source
+which scalaenv > /dev/null 2>&1; and scalaenv init - | source
 
 # mysql
 if test -e /usr/local/mysql/bin
@@ -28,6 +31,18 @@ if test -e /usr/local/squid222
   set -x fish_user_paths /usr/local/squid/bin     $fish_user_paths
   set -x fish_user_paths /usr/local/squid/sbin    $fish_user_paths
   set -x fish_user_paths /usr/local/squid/libexec $fish_user_paths
+end
+
+# perl
+if [ (uname) = 'Darwin' -a -e '/usr/local/opt/perl520/bin' ]
+  set -x fish_user_paths /usr/local/opt/perl520/bin $fish_user_paths
+end
+
+# java
+if [ (uname) = 'Darwin' ]
+  set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
+else if [ (uname) = 'Linux' ]
+  set -x JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64
 end
 
 # go

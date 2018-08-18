@@ -5,7 +5,7 @@ function fish_prompt --description 'Write out the prompt'
     set status_face (set_color red)"(*>_<)"
   end
 
-	# Save the return status of the previous command
+  # Save the return status of the previous command
   set stat $status
 
   if not set -q __fish_prompt_normal

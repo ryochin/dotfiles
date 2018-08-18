@@ -6,6 +6,7 @@ all:
 install: install-configs install-files
 
 install-configs:
+	test -e ~/.config || mkdir -p ~/.config
 	$(LINK) $(BASE)/.config/fish ~/.config/
 	$(LINK) $(BASE)/.config/htop ~/.config/
 

@@ -1,3 +1,6 @@
+# reset
+set -U fish_user_paths ''
+
 # files
 . ~/.config/fish/env.fish
 . ~/.config/fish/alias.fish

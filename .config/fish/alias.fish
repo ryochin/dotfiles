@@ -1,23 +1,23 @@
 # lang
-alias be='bundle exec'
-alias ce='carton exec'
-alias im='iex -S mix'
-alias pd=perldoc
-alias pdm='perldoc -m'
-alias pdl='perldoc -l'
-alias rubocop='rubocop -D'
+alias be 'bundle exec'
+alias ce 'carton exec'
+alias im 'iex -S mix'
+alias pd perldoc
+alias pdm 'perldoc -m'
+alias pdl 'perldoc -l'
+alias rubocop 'rubocop -D'
 
 # docker
-alias dk=docker
-alias dkc=docker-compose
-alias dkm=docker-machine
+alias dk docker
+alias dkc docker-compose
+alias dkm docker-machine
 
 # editor
 if [ -x /usr/local/bin/ee -o -x /usr/bin/ee ]
   export EDITOR=ee
 else
   export EDITOR=vi
-  alias ee='nano -w'
+  alias ee 'nano -w'
 end
 
 # ls
@@ -51,10 +51,19 @@ alias ag 'ag --color-match "4;33"'
 alias agq 'ag -Q'
 
 # unix commands
+if [ -x /usr/local/bin/ccat ]
+  alias c ccat
+else
+  alias c cat
+end
+
+if [ -x /usr/local/bin/colordiff ]
+  alias diff "/usr/local/bin/colordiff -NBaur"
+end
+
 alias ns netstat
 alias mv 'mv -i'
 alias rm 'rm -i'
-alias c cat
 alias h head
 alias j 'jobs -l'
 alias s sort
@@ -106,8 +115,6 @@ if [ (uname) = 'Darwin' ]
   alias subl 'subl -n'
   alias notify "terminal-notifier -sound default -message"
   alias youtube-dl 'youtube-dl --recode-video mp4'
-
-  if [ -x /usr/local/bin/colordiff ]
-    alias diff "/usr/local/bin/colordiff -NBaur"
-  end
+  alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
+  alias stree /Applications/SourceTree.app/Contents/Resources/stree
 end
