@@ -1,16 +1,14 @@
 BASE = `pwd`
 LINK = ln -sf
 
-all:
+install: install-configs install-files  ## Install all files
 
-install: install-configs install-files
-
-install-configs:
+install-configs:  ## Install config files
 	test -e ~/.config || mkdir -p ~/.config
 	$(LINK) $(BASE)/.config/fish ~/.config/
 	$(LINK) $(BASE)/.config/htop ~/.config/
 
-install-files:
+install-files:  ## Install dot files
 	$(LINK) $(BASE)/.colordiffrc ~
 	$(LINK) $(BASE)/.editorconfig ~
 	$(LINK) $(BASE)/.fd2rc ~
@@ -23,3 +21,10 @@ install-files:
 	$(LINK) $(BASE)/.sbtrc ~
 	$(LINK) $(BASE)/.tigrc ~
 	$(LINK) $(BASE)/.toprc ~
+
+.PHONY: help
+
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-32s\033[0m %s\n", $$1, $$2}'
+
+.DEFAULT_GOAL := help
