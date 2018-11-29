@@ -1,0 +1,5 @@
+include "/usr/local/opt/nano/share/nano/*.nanorc"
+
+set autoindent
+set nowrap
+set suspend

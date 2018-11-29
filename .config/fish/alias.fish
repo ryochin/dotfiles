@@ -1,6 +1,6 @@
 # lang
-alias be 'bundle exec'
-alias ce 'carton exec'
+alias be 'bundle exec --'
+alias ce 'carton exec --'
 alias im 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
@@ -68,6 +68,7 @@ alias h head
 alias j 'jobs -l'
 alias s sort
 alias t tail
+alias mtail multitail
 
 # pager
 alias n nmore
@@ -83,15 +84,18 @@ alias ggdcw 'git diff --cached -w --word-diff=color'
 alias ggb   'git branch'
 alias ggl   'git log --name-status'
 alias ggg   'git grep -ni'
+alias lg    'lazygit'
+alias gb    git-branch-activity
 
 # add options
 alias df 'df -h'
 alias du 'du -kh'
-alias diff 'diff -NBaur'
+# alias diff 'diff -NBaur'
 alias htop 'htop -d 10'
 alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
+alias rubocop 'rubocop -D'
 
 # others
 alias root 'su -l'
@@ -114,6 +118,7 @@ if [ (uname) = 'Darwin' ]
   alias ch 'open -a Chrome'
   alias subl 'subl -n'
   alias notify "terminal-notifier -sound default -message"
+  alias done "notify done!"
   alias youtube-dl 'youtube-dl --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree

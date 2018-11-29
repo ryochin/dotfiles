@@ -16,6 +16,7 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.iex.exs ~
 	$(LINK) $(BASE)/.init.ee ~
 	$(LINK) $(BASE)/.mytoprc ~
+	$(LINK) $(BASE)/.nanorc ~
 	$(LINK) $(BASE)/.proverc ~
 	$(LINK) $(BASE)/.pryrc ~
 	$(LINK) $(BASE)/.sbtrc ~

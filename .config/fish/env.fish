@@ -10,10 +10,14 @@ set -x LIBRARY_PATH /usr/local/lib
 export PERL_BADLANG=0
 export PERLDOC_PAGER={$PAGER}
 
+export BAT_THEME="Monokai Extended Bright"
+
 # path
 if test -e $HOME/bin
   set -x fish_user_paths $HOME/bin $fish_user_paths
 end
+
+set -x fish_user_paths /usr/local/sbin $fish_user_paths
 
 # *env
 which rbenv > /dev/null 2>&1; and rbenv init - | source
@@ -34,9 +38,9 @@ if test -e /usr/local/squid222
 end
 
 # perl
-if [ (uname) = 'Darwin' -a -e '/usr/local/opt/perl520/bin' ]
-  set -x fish_user_paths /usr/local/opt/perl520/bin $fish_user_paths
-end
+# if [ (uname) = 'Darwin' -a -e '/usr/local/opt/perl520/bin' ]
+#   set -x fish_user_paths /usr/local/opt/perl520/bin $fish_user_paths
+# end
 
 # java
 if [ (uname) = 'Darwin' ]
