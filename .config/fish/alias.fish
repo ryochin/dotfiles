@@ -1,6 +1,8 @@
 # lang
 alias be 'bundle exec --'
+alias ber 'bundle exec -- ruby'
 alias ce 'carton exec --'
+alias cep 'carton exec -- perl -w'
 alias im 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
@@ -96,6 +98,7 @@ alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias rubocop 'rubocop -D'
+alias glances 'glances -1 -t 2 --disable-bg'
 
 # others
 alias root 'su -l'

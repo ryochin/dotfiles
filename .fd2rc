@@ -606,9 +606,9 @@ MESSAGELANG="en"
 #		-f "%a %u %g %s %m %d %t %y %*f" \
 #		-f "%a %u/%g %m %d %t %y %*f"
 #(Examples)
-#launch ".zip"	"unzip -lqq"		" %s %m-%d-%y %t %*f"
-#launch ".zoo"	"zoo lq"		" %s %x %x %d %m %y %t %*f"
-#launch ".rar"	"unrar v" \
+launch ".zip"	"unzip -lqq"		" %s %m-%d-%y %t %*f"
+launch ".zoo"	"zoo lq"		" %s %x %x %d %m %y %t %*f"
+launch ".rar"	"unrar v" \
 #		-f " %*f\n%s %x %x %d-%m-%y %t %a" \
 #		-i "UNRAR *" \
 #		-i "RAR *" \

@@ -31,8 +31,9 @@
 
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-#	editor = cot -w
+	editor = nano -w
 	pager = less -x4
+	excludesfile = /Users/ryo/.gitignore_global
 
 [branch]
 	autosetupmerge = true
@@ -83,3 +84,9 @@
 
 [gpg]
 	program = gpg1
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/ryo/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

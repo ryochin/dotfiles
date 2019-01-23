@@ -7,10 +7,15 @@ set -x LD_LIBRARY_PATH /usr/local/lib
 set -x LIBRARY_PATH /usr/local/lib
 
 # surpress perl warnings
-export PERL_BADLANG=0
-export PERLDOC_PAGER={$PAGER}
+set -x PERL_BADLANG 0
+set -x PERLDOC_PAGER {$PAGER}
 
-export BAT_THEME="Monokai Extended Bright"
+set -x BAT_THEME "Monokai Extended Bright"
+
+set -x HOMEBREW_AUTO_UPDATE_SECS 21600
+
+# lang
+set -x ERL_AFLAGS "-kernel shell_history enabled"
 
 # path
 if test -e $HOME/bin
@@ -20,15 +25,24 @@ end
 set -x fish_user_paths /usr/local/sbin $fish_user_paths
 
 # *env
-which rbenv > /dev/null 2>&1; and rbenv init - | source
-# which pyenv > /dev/null 2>&1; and pyenv init - | source
-which plenv > /dev/null 2>&1; and plenv init - | source
+set PATH ~/.erlenv/bin $PATH
+which plenv    > /dev/null 2>&1; and plenv init -    | source
+which rbenv    > /dev/null 2>&1; and rbenv init -    | source
+which pyenv    > /dev/null 2>&1; and pyenv init -    | source
+which nodenv   > /dev/null 2>&1; and nodenv init -   | source
 which scalaenv > /dev/null 2>&1; and scalaenv init - | source
+which sbtenv   > /dev/null 2>&1; and sbtenv init -   | source
+which nodenv   > /dev/null 2>&1; and nodenv init -   | source
+which erlenv   > /dev/null 2>&1; and erlenv init -   | source
+# which exenv    > /dev/null 2>&1; and exenv init -    | source
 
 # mysql
 if test -e /usr/local/mysql/bin
   set -x fish_user_paths /usr/local/mysql/bin $fish_user_paths
 end
+
+set -x HOSTNAME (hostname -s)
+set -x MYSQL_PS1 "\u@$HOSTNAME [\d]> "
 
 # squid
 if test -e /usr/local/squid222
@@ -50,12 +64,18 @@ else if [ (uname) = 'Linux' ]
 end
 
 # go
-if test -e $HOME/go
-  set -x GOPATH $HOME/go
-  set -x GOROOT $HOME/go
-  test -e $GOROOT/bin; and set -x fish_user_paths $GOROOT/bin $fish_user_paths
-  test -e $GOPATH/bin; and set -x fish_user_paths $GOPATH/bin $fish_user_paths
-end
+# if test -e /usr/local/opt/go
+# set -x GOROOT /usr/local/opt/go
+#   set -x GOPATH $HOME/go
+#   test -e $GOROOT/bin; and set -x fish_user_paths $GOROOT/bin $fish_user_paths
+#   test -e $GOPATH/bin; and set -x fish_user_paths $GOPATH/bin $fish_user_paths
+# end
+
+set -x GOPATH $HOME/go
+
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+which goenv > /dev/null 2>&1; and goenv init - | source
 
 # app cli
 if [ (uname) = 'Darwin' ]
