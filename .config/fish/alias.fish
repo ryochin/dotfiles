@@ -94,11 +94,13 @@ alias df 'df -h'
 alias du 'du -kh'
 # alias diff 'diff -NBaur'
 alias htop 'htop -d 10'
+alias ctop 'ctop -a'
 alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias rubocop 'rubocop -D'
 alias glances 'glances -1 -t 2 --disable-bg'
+alias pwgen 'pwgen -B'
 
 # others
 alias root 'su -l'
@@ -117,11 +119,15 @@ alias webservice stacks-cli
 # macOS
 if [ (uname) = 'Darwin' ]
   alias o open
+  alias ldd 'otool -L'
+
+  alias notify "terminal-notifier -sound default -message"
+  alias done "notify done!"
+
+  # app
   alias ff 'open -a Firefox'
   alias ch 'open -a Chrome'
   alias subl 'subl -n'
-  alias notify "terminal-notifier -sound default -message"
-  alias done "notify done!"
   alias youtube-dl 'youtube-dl --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree

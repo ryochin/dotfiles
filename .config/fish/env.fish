@@ -25,7 +25,9 @@ end
 set -x fish_user_paths /usr/local/sbin $fish_user_paths
 
 # *env
-set PATH ~/.erlenv/bin $PATH
+if test -e ~/.erlenv/bin
+  set PATH ~/.erlenv/bin $PATH
+end
 which plenv    > /dev/null 2>&1; and plenv init -    | source
 which rbenv    > /dev/null 2>&1; and rbenv init -    | source
 which pyenv    > /dev/null 2>&1; and pyenv init -    | source
@@ -72,9 +74,11 @@ end
 # end
 
 set -x GOPATH $HOME/go
-
 export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
+if test -e $GOENV_ROOT/bin
+  set PATH $GOENV_ROOT/bin $PATH
+end
+
 which goenv > /dev/null 2>&1; and goenv init - | source
 
 # app cli

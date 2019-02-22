@@ -29,6 +29,7 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.replyrc ~
 	$(LINK) $(BASE)/.boto ~
 	$(LINK) $(BASE)/.agignore ~
+	$(LINK) $(BASE)/.vuerc ~
 
 	# should be plain file
 	$(HARD_LINK) $(BASE)/.dataprinter ~
