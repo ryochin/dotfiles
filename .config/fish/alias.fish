@@ -105,7 +105,7 @@ alias pwgen 'pwgen -B'
 # others
 alias root 'su -l'
 alias tt 'tail -48'
-alias tf 'tail -f -0'
+alias tf 'tail -F -n 0'
 alias ftp 'ncftp -L'
 alias shredder 'shred -u -n 7'
 alias kc 'knife solo cook --no-berkshelf --no-chef-check'
@@ -131,4 +131,7 @@ if [ (uname) = 'Darwin' ]
   alias youtube-dl 'youtube-dl --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
+else if [ (uname) = 'Linux' ]
+  alias sc systemctl
+  alias sc journalctl
 end
