@@ -30,6 +30,7 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.boto ~
 	$(LINK) $(BASE)/.agignore ~
 	$(LINK) $(BASE)/.vuerc ~
+	$(LINK) $(BASE)/.tidyrc ~
 
 	# should be plain file
 	$(HARD_LINK) $(BASE)/.dataprinter ~

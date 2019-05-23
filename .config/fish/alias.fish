@@ -128,7 +128,7 @@ if [ (uname) = 'Darwin' ]
   alias ff 'open -a Firefox'
   alias ch 'open -a Chrome'
   alias subl 'subl -n'
-  alias youtube-dl 'youtube-dl --recode-video mp4'
+  alias youtube-dl 'youtube-dl -k --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
 else if [ (uname) = 'Linux' ]

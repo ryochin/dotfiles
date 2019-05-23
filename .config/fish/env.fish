@@ -38,6 +38,14 @@ which nodenv   > /dev/null 2>&1; and nodenv init -   | source
 which erlenv   > /dev/null 2>&1; and erlenv init -   | source
 # which exenv    > /dev/null 2>&1; and exenv init -    | source
 
+if test -e /opt/rbenv/bin
+  set -x fish_user_paths /opt/rbenv/bin $fish_user_paths
+end
+
+if test -e ~/.exenv/shims
+  set -x fish_user_paths ~/.exenv/shims $fish_user_paths
+end
+
 # mysql
 if test -e /usr/local/mysql/bin
   set -x fish_user_paths /usr/local/mysql/bin $fish_user_paths
