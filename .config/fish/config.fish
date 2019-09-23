@@ -2,8 +2,8 @@
 set -U fish_user_paths ''
 
 # files
-. ~/.config/fish/env.fish
-. ~/.config/fish/alias.fish
+source ~/.config/fish/env.fish
+source ~/.config/fish/alias.fish
 
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'

@@ -25,9 +25,6 @@ end
 set -x fish_user_paths /usr/local/sbin $fish_user_paths
 
 # *env
-if test -e ~/.erlenv/bin
-  set PATH ~/.erlenv/bin $PATH
-end
 which plenv    > /dev/null 2>&1; and plenv init -    | source
 which rbenv    > /dev/null 2>&1; and rbenv init -    | source
 which pyenv    > /dev/null 2>&1; and pyenv init -    | source
@@ -41,9 +38,11 @@ which erlenv   > /dev/null 2>&1; and erlenv init -   | source
 if test -e /opt/rbenv/bin
   set -x fish_user_paths /opt/rbenv/bin $fish_user_paths
 end
-
+if test -e ~/.erlenv/shims
+  set -x fish_user_paths $HOME/.erlenv/shims $fish_user_paths
+end
 if test -e ~/.exenv/shims
-  set -x fish_user_paths ~/.exenv/shims $fish_user_paths
+  set -x fish_user_paths $HOME/.exenv/shims $fish_user_paths
 end
 
 # mysql
@@ -82,6 +81,9 @@ end
 
 which goenv > /dev/null 2>&1; and goenv init - | source
 
+# elixir
+set -x fish_user_paths ~/.mix/escripts $fish_user_paths
+
 # app cli
 if [ (uname) = 'Darwin' ]
   if [ -e '/Applications/CotEditor.app/Contents/SharedSupport/bin' ]
@@ -93,6 +95,10 @@ if [ (uname) = 'Darwin' ]
   if [ -e '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' ]
     set -x fish_user_paths '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' $fish_user_paths
   end
+end
+
+if test -e /opt/samba/bin
+  set -x fish_user_paths /opt/samba/bin $fish_user_paths
 end
 
 if [ (uname) = 'Darwin' ]

@@ -3,7 +3,7 @@ alias be 'bundle exec --'
 alias ber 'bundle exec -- ruby'
 alias ce 'carton exec --'
 alias cep 'carton exec -- perl -w'
-alias im 'iex -S mix'
+alias iexm 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
 alias pdl 'perldoc -l'
@@ -53,11 +53,7 @@ alias ag 'ag --color-match "4;33"'
 alias agq 'ag -Q'
 
 # unix commands
-if [ -x /usr/local/bin/ccat ]
-  alias c ccat
-else
-  alias c cat
-end
+alias c cat
 
 if [ -x /usr/local/bin/colordiff ]
   alias diff "/usr/local/bin/colordiff -NBaur"
@@ -121,12 +117,22 @@ if [ (uname) = 'Darwin' ]
   alias o open
   alias ldd 'otool -L'
 
+  alias d  'exa -lFg   --time-style iso'
+  alias da 'exa -lFgah --time-style long-iso'
+  alias l da
+
   alias notify "terminal-notifier -sound default -message"
   alias done "notify done!"
 
+  # modern replacements
+  alias ping 'prettyping --nolegend'
+  alias du "ncdu --color dark -rr -x --exclude .git"
+  alias ff '/usr/local/opt/fd/bin/fd'    # renamed: conflict with fdclone
+  alias help tldr
+
   # app
-  alias ff 'open -a Firefox'
-  alias ch 'open -a Chrome'
+  alias firefox 'open -a Firefox'
+  alias chrome 'open -a Chrome'
   alias subl 'subl -n'
   alias youtube-dl 'youtube-dl -k --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'

@@ -24,3 +24,13 @@ set tab-size = 4
 set show-changes = no
 set diff-options = -m --first-parent
 set reference-format = (branch) [tag]
+set diff-highlight = true
+set mouse = true
+
+bind generic ~      :goto %(commit)^
+
+bind main    .      !sh -c "git diff %(commit) | tig"
+bind diff    .      !sh -c "git diff %(commit) | tig"
+bind refs    .      !sh -c "git diff %(branch) | tig"
+
+bind stash   D      ?git stash drop %(stash)

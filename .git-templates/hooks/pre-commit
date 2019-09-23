@@ -1,0 +1,15 @@
+#!/bin/sh
+
+git secrets --pre_commit_hook -- "$@"
+
+changes_count=$(git diff --cached | wc -l)
+
+if [ "$changes_count" -ne "0" ]; then
+  # Check for 'FIX ME' lines
+  todo_lines=$(git diff --cached | grep -v pre-commit | grep FIXME | sed 's_^+\s*__g')
+  if [ "$todo_lines" != "" ]; then
+    echo "You probably didn't want to commit these lines:"
+    echo "$todo_lines"
+    exit 1
+  fi
+fi
