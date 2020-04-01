@@ -7,7 +7,7 @@ alias iexm 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
 alias pdl 'perldoc -l'
-alias rubocop 'rubocop -D'
+alias rc 'rubocop -D'
 
 # docker
 alias dk docker
@@ -69,9 +69,8 @@ alias t tail
 alias mtail multitail
 
 # pager
-alias n nmore
+alias n bat
 alias m $PAGER
-alias tm tmore
 
 # git
 alias ggs   'git status'
@@ -134,7 +133,8 @@ if [ (uname) = 'Darwin' ]
   alias firefox 'open -a Firefox'
   alias chrome 'open -a Chrome'
   alias subl 'subl -n'
-  alias youtube-dl 'youtube-dl -k --recode-video mp4'
+  alias youtube-dl 'youtube-dl -k'
+  alias youtube-dl-mp4 'youtube-dl -k --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
 else if [ (uname) = 'Linux' ]

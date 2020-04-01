@@ -15,7 +15,7 @@ charset = utf-8
 
 indent_style = tab
 
-[*.{md,markdown,html,htm,erb,slim,tx,cfg}]
+[*.{md,markdown,html,htm,erb,slim,tx,cfg,eex,yml,yaml}]
 
 trim_trailing_whitespace = false
 

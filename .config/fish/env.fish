@@ -82,7 +82,9 @@ end
 which goenv > /dev/null 2>&1; and goenv init - | source
 
 # elixir
-set -x fish_user_paths ~/.mix/escripts $fish_user_paths
+if test -e ~/.mix/escripts
+  set -x fish_user_paths ~/.mix/escripts $fish_user_paths
+end
 
 # app cli
 if [ (uname) = 'Darwin' ]

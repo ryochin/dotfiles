@@ -1,2 +1,3 @@
 --theme="ansi-dark"
+--paging=never
 --pager="less -R"
