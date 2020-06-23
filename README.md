@@ -5,6 +5,34 @@ Dotfiles
 
 > My Dotfiles.
 
+Fish
+----
+
+### fisher + plugins
+
+```sh
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+fisher add jethrokuan/z
+fisher add 0rax/fish-bd
+
+fish_update_completions
+```
+
+### fzf
+
+```sh
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --64 --no-bash --no-zsh
+fisher add fzf
+```
+
+### done
+
+```sh
+fisher add franciscolourenco/done
+set -U __done_min_cmd_duration 60000
+```
+
 License
 -------
 

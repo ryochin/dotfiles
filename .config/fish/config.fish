@@ -54,3 +54,6 @@ end
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [ -f /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/sls.fish ]; and . /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/sls.fish
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true

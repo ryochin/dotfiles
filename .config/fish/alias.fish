@@ -15,11 +15,13 @@ alias dkc docker-compose
 alias dkm docker-machine
 
 # editor
-if [ -x /usr/local/bin/ee -o -x /usr/bin/ee ]
+if [ -x /usr/local/bin/nano -o -x /usr/bin/nano ]
+  export EDITOR="nano -w"
+  alias ee $EDITOR
+else if [ -x /usr/local/bin/ee ]
   export EDITOR=ee
 else
   export EDITOR=vi
-  alias ee 'nano -w'
 end
 
 # ls
@@ -110,8 +112,9 @@ alias files 'file ./* | egrep -v "(empty|directory|symbolic|Permission denied)" 
 alias xmllint_html 'xmllint --html --noout'
 alias swapinfo 'swapinfo -k'
 alias webservice stacks-cli
+alias aws='docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
 
-# macOS
+# OS specific
 if [ (uname) = 'Darwin' ]
   alias o open
   alias ldd 'otool -L'
@@ -139,5 +142,5 @@ if [ (uname) = 'Darwin' ]
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
 else if [ (uname) = 'Linux' ]
   alias sc systemctl
-  alias sc journalctl
+  alias jc journalctl
 end
