@@ -35,6 +35,9 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.tidyrc ~
 	$(LINK) $(BASE)/.multitailrc ~
 	$(LINK) $(BASE)/.gemrc ~
+	$(LINK) $(BASE)/.asdfrc ~
+	$(LINK) $(BASE)/.default-gems ~
+	$(LINK) $(BASE)/.tool-versions ~
 
 	# should be plain file
 	$(HARD_LINK) $(BASE)/.dataprinter ~

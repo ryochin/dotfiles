@@ -1,0 +1,2 @@
+legacy_version_file = yes
+post_asdf_install_perl = curl -L https://cpanmin.us | perl - App::cpanminus

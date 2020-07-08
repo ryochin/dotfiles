@@ -2,9 +2,9 @@
 
 set -x LANG en_US.UTF-8
 set -x EDITOR vi
-set -x PAGER "less -RF"
+set -x PAGER "less -R"
 
-set PATH /usr/local/sbin /usr/libexec /usr/local/libexec $PATH
+set PATH /usr/sbin /usr/local/sbin /usr/libexec /usr/local/libexec $PATH
 
 if test -e $HOME/bin
   set PATH $HOME/bin $PATH
@@ -34,8 +34,7 @@ if test -e ~/.mix/escripts
   set PATH ~/.mix/escripts $PATH
 end
 
-### Java
-
+# Java
 if [ (uname) = 'Darwin' ]
   set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
 else if [ (uname) = 'Linux' ]
@@ -46,40 +45,9 @@ end
 set -x GOPATH $HOME/go
 export GOENV_ROOT="$HOME/.goenv"
 
-if test -e $GOENV_ROOT/bin
-  set PATH $GOENV_ROOT/bin $PATH
-end
-
-if test -e $GOPATH/bin
-  set PATH $GOPATH/bin $PATH
-end
-
-# deno
-if test -e ~/.deno/bin
-  set PATH ~/.deno/bin $PATH
-end
-
-### *env
-
-which plenv >/dev/null 2>&1; and plenv init - | source
-which rbenv >/dev/null 2>&1; and rbenv init - | source
-which pyenv >/dev/null 2>&1; and pyenv init - | source
-which nodenv >/dev/null 2>&1; and nodenv init - | source
-which scalaenv >/dev/null 2>&1; and scalaenv init - | source
-which sbtenv >/dev/null 2>&1; and sbtenv init - | source
-which nodenv >/dev/null 2>&1; and nodenv init - | source
-which erlenv >/dev/null 2>&1; and erlenv init - | source
-which goenv >/dev/null 2>&1; and goenv init - | source
-# which exenv       > /dev/null 2>&1; and exenv       init - | source
-
-if test -e /opt/rbenv/bin
-  set PATH /opt/rbenv/bin $PATH
-end
-if test -e ~/.erlenv/shims
-  set PATH ~/.erlenv/shims $PATH
-end
-if test -e ~/.exenv/shims
-  set PATH ~/.exenv/shims $PATH
+# Rust
+if test -e $HOME/.cargo/bin
+  set PATH $HOME/.cargo/bin $PATH
 end
 
 ### CLI Options

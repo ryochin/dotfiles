@@ -119,8 +119,13 @@ if [ (uname) = 'Darwin' ]
   alias o open
   alias ldd 'otool -L'
 
-  alias d  'exa -lFg   --time-style iso'
-  alias da 'exa -lFgah --time-style long-iso'
+  if test -e /usr/local/bin/exa
+    alias d  'exa -lFg   --time-style iso'
+    alias da 'exa -lFgah --time-style long-iso'
+  else
+    alias d  'ls -lFg   --time-style iso'
+    alias da 'ls -lFgah --time-style long-iso'
+  end
   alias l da
 
   alias notify "terminal-notifier -sound default -message"

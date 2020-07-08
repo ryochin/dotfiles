@@ -3,7 +3,7 @@ Dotfiles
 
 [![CC0](http://img.shields.io/badge/license-CC0-blue.svg?style=flat)](LICENSE)
 
-> My Dotfiles.
+> My dotfiles.
 
 Fish
 ----

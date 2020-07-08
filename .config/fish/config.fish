@@ -31,11 +31,11 @@ end
 # home
 
 function sethome
-	set -g MYHOME (pwd)
+  set -g MYHOME (pwd)
 end
 
 function gohome
-	cd "$MYHOME"
+  cd "$MYHOME"
 end
 
 # gcs
@@ -46,6 +46,11 @@ if [ -f "$GCS_DIR/path.fish.inc" ]
   else
     . "$GCS_DIR/path.fish.inc"
   end
+end
+
+# asdf
+if test -e /usr/local/opt/asdf/asdf.fish
+  source /usr/local/opt/asdf/asdf.fish
 end
 
 # tabtab source for serverless package
