@@ -25,7 +25,7 @@ set __fish_git_prompt_color_upstream_behind red
 # auto cd
 function cd
   builtin cd $argv
-  dir
+  d
 end
 
 # home
@@ -51,6 +51,11 @@ end
 # asdf
 if test -e /usr/local/opt/asdf/asdf.fish
   source /usr/local/opt/asdf/asdf.fish
+end
+
+# llvm
+if test -e /usr/local/opt/llvm/bin
+  set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
 end
 
 # tabtab source for serverless package

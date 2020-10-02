@@ -62,14 +62,24 @@ set -x MYSQL_PS1 "\u@"(hostname -s)" [\d]> "
 ### App CLI
 
 if [ (uname) = 'Darwin' ]
-  if [ -e '/Applications/CotEditor.app/Contents/SharedSupport/bin' ]
-    set PATH '/Applications/CotEditor.app/Contents/SharedSupport/bin' $PATH
+  if test -e /Applications/CotEditor.app/Contents/SharedSupport/bin
+    set PATH /Applications/CotEditor.app/Contents/SharedSupport/bin $PATH
   end
-  if [ -e '/Applications/Sublime Text.app/Contents/SharedSupport/bin' ]
-    set PATH '/Applications/Sublime Text.app/Contents/SharedSupport/bin' $PATH
+  if test -e $HOME/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+    set PATH $HOME/Applications/Sublime\ Text.app/Contents/SharedSupport/bin $PATH
   end
-  if [ -e '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' ]
-    set PATH '/Applications/Visual Studio Code.app/Contents/Resources/app/bin' $PATH
+  if test -e $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+    set PATH $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin $PATH
+  end
+end
+
+### Homebrew: keg-only
+
+set keg_list curl sqlite
+
+for i in $keg_list
+  if test -e /usr/local/opt/$i/bin
+    set PATH /usr/local/opt/$i/bin $PATH
   end
 end
 
@@ -80,5 +90,5 @@ if test -e /opt/samba/bin
 end
 
 if [ (uname) = 'Darwin' ]
-  set -x CLOUDSDK_PYTHON /Users/ryo/.pyenv/versions/2.7.15/bin/python2.7
+  set -x CLOUDSDK_PYTHON $HOME/.asdf/shims/python2.7
 end

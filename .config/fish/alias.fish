@@ -24,22 +24,27 @@ else
   export EDITOR=vi
 end
 
-# ls
-if [ -x /usr/local/bin/gls ]
-  alias ls '/usr/local/bin/gls --color'
+if [ -x /usr/local/bin/ee ]
+  alias easyedit /usr/local/bin/ee
 end
 
-alias dir 'ls -lF'
-alias dh  'dir -h'
-alias d   dir
-
-alias l    'ls -lFA'
-alias lr   'ls -RF'
-alias lf   'ls -AF'
-alias lt   'ls -lFAt'
-alias ltr  'ls -lFAtr'
-alias lss  'ls -lF | sort -n +4'
-alias lssr 'ls -lF | sort -nr +4'
+# ls
+if test -e /usr/local/bin/exa
+  alias d 'exa -lFg   --time-style iso'
+  alias l 'exa -lFgah --time-style long-iso'
+  alias lt 'exa -lFg --time-style iso -s modified -r'
+  alias ltr 'exa -lFg --time-style iso -s modified'
+else if test -x /usr/local/bin/gls
+  alias d 'gls --color -lFg   --time-style iso'
+  alias l 'gls --color -lFgah --time-style long-iso'
+  alias lt 'gls --color -lFg   --time-style iso -t'
+  alias ltr 'gls --color -lFg   --time-style iso -t -r'
+else
+  alias d 'ls -lF'
+  alias l 'ls -lFA'
+  alias lt 'ls -lF -t'
+  alias ltr 'ls -lF -t -r'
+end
 
 alias tree 'tree -CF'
 
@@ -118,16 +123,6 @@ alias aws='docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
 if [ (uname) = 'Darwin' ]
   alias o open
   alias ldd 'otool -L'
-
-  if test -e /usr/local/bin/exa
-    alias d  'exa -lFg   --time-style iso'
-    alias da 'exa -lFgah --time-style long-iso'
-  else
-    alias d  'ls -lFg   --time-style iso'
-    alias da 'ls -lFgah --time-style long-iso'
-  end
-  alias l da
-
   alias notify "terminal-notifier -sound default -message"
   alias done "notify done!"
 

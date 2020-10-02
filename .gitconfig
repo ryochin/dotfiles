@@ -34,7 +34,7 @@
 	editor = nano -w
 	pager = less -x4
 	excludesfile = /Users/ryo/.gitignore_global
-	autocrlf = input
+	autocrlf = false
 
 [branch]
 	autosetupmerge = true

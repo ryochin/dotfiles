@@ -2,7 +2,7 @@
   show_readonly => 1,
   # show_tied => 0,
   filters => {
-    -external => [ qw(DateTime DB Digest) ],
+    -external => [ qw(DateTime DB DBIx::Class Digest) ],
     boolean => sub { my $o = shift; sprintf "boolean: %s", $o->isTrue ? "true" : "false" },
     "Path::Class::File" => sub { my $o = shift; sprintf "%s: %s", ref $o, p( $o->stringify ) },
     "SC::Node::Date"    => sub { my $o = shift; sprintf "%s: %s %s", ref $o, $o->ymd("."), $o->hms },

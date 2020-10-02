@@ -1,8 +1,8 @@
 begin
-  require 'awesome_print'
+  require 'amazing_print'
 rescue LoadError
 else
-  AwesomePrint.pry!
+  AmazingPrint.pry!
 end
 
 if defined?(PryByebug)
