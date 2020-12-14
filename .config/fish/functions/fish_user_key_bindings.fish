@@ -21,3 +21,5 @@ function fish_user_key_bindings
       bind \t '__fzf_complete'
   end
 end
+
+fzf_key_bindings

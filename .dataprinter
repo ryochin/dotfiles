@@ -4,9 +4,10 @@
   filters => {
     -external => [ qw(DateTime DB DBIx::Class Digest) ],
     boolean => sub { my $o = shift; sprintf "boolean: %s", $o->isTrue ? "true" : "false" },
-    "Path::Class::File" => sub { my $o = shift; sprintf "%s: %s", ref $o, p( $o->stringify ) },
+    "Path::Class::File" => sub { my $o = shift; sprintf "%s: %s", ref $o, np( $o->stringify ) },
+    "JSON::XS::Boolean" => sub { my $o = shift; sprintf "%s: %s", ref $o, $o ? 'true' : 'false' },
+    "Hash::MultiValue"  => sub { my $o = shift; sprintf "%s: %s", ref $o, np($o->as_hashref) },
     "SC::Node::Date"    => sub { my $o = shift; sprintf "%s: %s %s", ref $o, $o->ymd("."), $o->hms },
-    "JSON::XS::Boolean" => sub { my $o = shift; return sprintf "JSON::XS::Boolean: %s", $o ? 'true' : 'false' },
   },
   datetime => {
     show_class_name => 1,  # default is 0

@@ -3,6 +3,7 @@
 
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = main
 
 [color]
 	branch = auto

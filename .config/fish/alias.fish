@@ -2,7 +2,7 @@
 alias be 'bundle exec --'
 alias ber 'bundle exec -- ruby'
 alias ce 'carton exec --'
-alias cep 'carton exec -- perl -w'
+alias cep 'carton exec -- perl -w -Ilib,extlib'
 alias iexm 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
@@ -115,9 +115,7 @@ alias curl-head 'curl -D - -s -o /dev/null'
 alias null 'cat /dev/null >'
 alias files 'file ./* | egrep -v "(empty|directory|symbolic|Permission denied)" '
 alias xmllint_html 'xmllint --html --noout'
-alias swapinfo 'swapinfo -k'
-alias webservice stacks-cli
-alias aws='docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
+alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
 
 # OS specific
 if [ (uname) = 'Darwin' ]
@@ -143,4 +141,6 @@ if [ (uname) = 'Darwin' ]
 else if [ (uname) = 'Linux' ]
   alias sc systemctl
   alias jc journalctl
+
+  alias swapinfo 'swapinfo -k'
 end

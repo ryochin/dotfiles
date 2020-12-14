@@ -534,7 +534,7 @@ MESSAGELANG="en"
 #	Default: none
 #NOCONVPATH=""
 
-#PAGER=more%K
+PAGER=bat
 #EDITOR=vi
 #SHELL=/bin/sh
 

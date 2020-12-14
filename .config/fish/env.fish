@@ -50,6 +50,19 @@ if test -e $HOME/.cargo/bin
   set PATH $HOME/.cargo/bin $PATH
 end
 
+### texlive
+
+if [ (uname) = 'Linux' ]
+  if test -e /usr/local/texlive/2020/bin/x86_64-linux
+    set PATH /usr/local/texlive/2020/bin/x86_64-linux $PATH
+  end
+end
+if [ (uname) = 'Darwin' ]
+  if test -e /usr/local/texlive/2020/bin/x86_64-darwin
+    set PATH /usr/local/texlive/2020/bin/x86_64-darwin $PATH
+  end
+end
+
 ### CLI Options
 
 set -x HOMEBREW_AUTO_UPDATE_SECS 21600

@@ -12,6 +12,7 @@ install-configs:  ## Install config files
 	$(LINK) $(BASE)/.config/bat ~/.config/
 	mkdir -p ~/.config/glances
 	$(LINK) $(BASE)/.config/glances/glances.conf ~/.config/glances/
+	$(LINK) $(BASE)/.config/peco ~/.config/
 
 install-files:  ## Install dot files
 	$(LINK) $(BASE)/.colordiffrc ~
@@ -38,6 +39,9 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.asdfrc ~
 	$(LINK) $(BASE)/.default-gems ~
 	$(LINK) $(BASE)/.tool-versions ~
+
+	mkdir -p ~/.bundler
+	$(LINK) $(BASE)/.bundle/config ~/.bundle
 
 	# should be plain file
 	$(HARD_LINK) $(BASE)/.dataprinter ~

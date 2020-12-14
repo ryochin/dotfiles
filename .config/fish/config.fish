@@ -49,6 +49,13 @@ if [ -f "$GCS_DIR/path.fish.inc" ]
 end
 
 # asdf
+if test -e /opt/asdf
+  set -x ASDF_DATA_DIR /opt/asdf
+end
+
+if test -e /opt/asdf/asdf.fish
+  source /opt/asdf/asdf.fish
+end
 if test -e /usr/local/opt/asdf/asdf.fish
   source /usr/local/opt/asdf/asdf.fish
 end

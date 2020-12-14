@@ -12,8 +12,8 @@ Fish
 
 ```sh
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-fisher add jethrokuan/z
-fisher add 0rax/fish-bd
+fisher install jethrokuan/z
+fisher install 0rax/fish-bd
 
 fish_update_completions
 ```
@@ -21,15 +21,19 @@ fish_update_completions
 ### fzf
 
 ```sh
+brew install fzf    # macOS
+sudo apt install -y fzf    # on Ubuntu
+
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --64 --no-bash --no-zsh
-fisher add fzf
+~/.fzf/install --no-bash --no-zsh
+
+fzf_key_bindings
 ```
 
 ### done
 
 ```sh
-fisher add franciscolourenco/done
+fisher install franciscolourenco/done
 set -U __done_min_cmd_duration 60000
 ```
 
@@ -37,3 +41,4 @@ License
 -------
 
 CC0 1.0 Universal, Public Domain
+
