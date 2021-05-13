@@ -15,26 +15,26 @@ alias dkc docker-compose
 alias dkm docker-machine
 
 # editor
-if [ -x /usr/local/bin/nano -o -x /usr/bin/nano ]
-  export EDITOR="nano -w"
+if test -x /usr/local/bin/nano -o -x /usr/bin/nano -o -x $HOMEBREW_HOME/nano
+  export EDITOR=nano
   alias ee $EDITOR
-else if [ -x /usr/local/bin/ee ]
+else if test -x /usr/local/bin/ee -o -x $HOMEBREW_HOME/bin/ee
   export EDITOR=ee
 else
   export EDITOR=vi
 end
 
-if [ -x /usr/local/bin/ee ]
-  alias easyedit /usr/local/bin/ee
+if test -x /usr/local/bin/ee -o -x $HOMEBREW_HOME/bin/ee
+  alias easyedit $HOMEBREW_HOME/bin/ee
 end
 
 # ls
-if test -e /usr/local/bin/exa
-  alias d 'exa -lFg   --time-style iso'
-  alias l 'exa -lFgah --time-style long-iso'
-  alias lt 'exa -lFg --time-style iso -s modified -r'
-  alias ltr 'exa -lFg --time-style iso -s modified'
-else if test -x /usr/local/bin/gls
+if test -x /usr/local/bin/exa -o -x $HOMEBREW_HOME/opt/exa/bin/exa
+  alias d 'exa -lFg   --git --time-style iso'
+  alias l 'exa -lFgah --git --time-style long-iso'
+  alias lt 'exa -lFg --git --time-style iso -s modified -r'
+  alias ltr 'exa -lFg --git --time-style iso -s modified'
+else if test -x /usr/local/bin/gls -o -e $HOMEBREW_HOME/opt/coreutils/bin/gls
   alias d 'gls --color -lFg   --time-style iso'
   alias l 'gls --color -lFgah --time-style long-iso'
   alias lt 'gls --color -lFg   --time-style iso -t'
@@ -61,9 +61,12 @@ alias agq 'ag -Q'
 
 # unix commands
 alias c cat
+alias b bat
 
-if [ -x /usr/local/bin/colordiff ]
-  alias diff "/usr/local/bin/colordiff -NBaur"
+if test -x /usr/local/bin/colordiff
+  alias diff '/usr/local/bin/colordiff -NBaur'
+else if test -x $HOMEBREW_HOME/opt/colordiff/bin/colordiff
+  alias diff '/opt/homebrew/opt/colordiff/bin/colordiff -NBaur'
 end
 
 alias ns netstat
@@ -101,8 +104,9 @@ alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
 alias rubocop 'rubocop -D'
-alias glances 'glances -1 -t 2 --disable-bg'
+alias glances 'glances -1 -t 5 --disable-bg --disable-webui'
 alias pwgen 'pwgen -B'
+alias ncdu "ncdu --color dark -rr -x --exclude .git"
 
 # others
 alias root 'su -l'
@@ -116,6 +120,7 @@ alias null 'cat /dev/null >'
 alias files 'file ./* | egrep -v "(empty|directory|symbolic|Permission denied)" '
 alias xmllint_html 'xmllint --html --noout'
 alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
+alias webserver miniserve
 
 # OS specific
 if [ (uname) = 'Darwin' ]
@@ -123,12 +128,17 @@ if [ (uname) = 'Darwin' ]
   alias ldd 'otool -L'
   alias notify "terminal-notifier -sound default -message"
   alias done "notify done!"
+  alias help tldr
+  alias vmstat /usr/bin/vm_stat
+  alias strace /usr/bin/dtruss
 
   # modern replacements
   alias ping 'prettyping --nolegend'
-  alias du "ncdu --color dark -rr -x --exclude .git"
-  alias ff '/usr/local/opt/fd/bin/fd'    # renamed: conflict with fdclone
-  alias help tldr
+
+  # renamed: conflict with fdclone
+  if test -x $HOMEBREW_HOME/opt/fd/bin/fd
+    alias ff $HOMEBREW_HOME/opt/fd/bin/fd
+  end
 
   # app
   alias firefox 'open -a Firefox'

@@ -13,38 +13,39 @@ install-configs:  ## Install config files
 	mkdir -p ~/.config/glances
 	$(LINK) $(BASE)/.config/glances/glances.conf ~/.config/glances/
 	$(LINK) $(BASE)/.config/peco ~/.config/
+	$(LINK) $(BASE)/.config/lsd ~/.config/
 
 install-files:  ## Install dot files
-	$(LINK) $(BASE)/.colordiffrc ~
-	$(LINK) $(BASE)/.editorconfig ~
-	$(LINK) $(BASE)/.fd2rc ~
-	$(LINK) $(BASE)/.gitconfig ~
-	$(LINK) $(BASE)/.iex.exs ~
-	$(LINK) $(BASE)/.init.ee ~
-	$(LINK) $(BASE)/.mytoprc ~
-	$(LINK) $(BASE)/.nanorc ~
-	$(LINK) $(BASE)/.proverc ~
-	$(LINK) $(BASE)/.pryrc ~
-	$(LINK) $(BASE)/.sbtrc ~
-	$(LINK) $(BASE)/.tigrc ~
-	$(LINK) $(BASE)/.toprc ~
-	$(LINK) $(BASE)/.tmux.conf ~
-	$(LINK) $(BASE)/.replyrc ~
-	$(LINK) $(BASE)/.boto ~
-	$(LINK) $(BASE)/.agignore ~
-	$(LINK) $(BASE)/.vuerc ~
-	$(LINK) $(BASE)/.tidyrc ~
-	$(LINK) $(BASE)/.multitailrc ~
-	$(LINK) $(BASE)/.gemrc ~
-	$(LINK) $(BASE)/.asdfrc ~
-	$(LINK) $(BASE)/.default-gems ~
-	$(LINK) $(BASE)/.tool-versions ~
+	$(LINK) $(BASE)/.colordiffrc ~/
+	$(LINK) $(BASE)/.editorconfig ~/
+	$(LINK) $(BASE)/.fd2rc ~/
+	$(LINK) $(BASE)/.gitconfig ~/
+	$(LINK) $(BASE)/.iex.exs ~/
+	$(LINK) $(BASE)/.init.ee ~/
+	$(LINK) $(BASE)/.mytoprc ~/
+	$(LINK) $(BASE)/.nanorc ~/
+	$(LINK) $(BASE)/.proverc ~/
+	$(LINK) $(BASE)/.pryrc ~/
+	$(LINK) $(BASE)/.sbtrc ~/
+	$(LINK) $(BASE)/.tigrc ~/
+	$(LINK) $(BASE)/.toprc ~/
+	$(LINK) $(BASE)/.tmux.conf ~/
+	$(LINK) $(BASE)/.replyrc ~/
+	$(LINK) $(BASE)/.boto ~/
+	$(LINK) $(BASE)/.agignore ~/
+	$(LINK) $(BASE)/.vuerc ~/
+	$(LINK) $(BASE)/.tidyrc ~/
+	$(LINK) $(BASE)/.multitailrc ~/
+	$(LINK) $(BASE)/.gemrc ~/
+	$(LINK) $(BASE)/.asdfrc ~/
+	$(LINK) $(BASE)/.default-gems ~/
+	$(LINK) $(BASE)/.default-npm-packages ~/
 
-	mkdir -p ~/.bundler
+	mkdir -p ~/.bundle
 	$(LINK) $(BASE)/.bundle/config ~/.bundle
 
 	# should be plain file
-	$(HARD_LINK) $(BASE)/.dataprinter ~
+	$(HARD_LINK) $(BASE)/.dataprinter ~/
 
 install-git-templates:  ## Install Git template files
 	test -e ~/.git-templates/hooks || mkdir -p ~/.git-templates/hooks

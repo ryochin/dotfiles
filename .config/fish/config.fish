@@ -55,9 +55,12 @@ end
 
 if test -e /opt/asdf/asdf.fish
   source /opt/asdf/asdf.fish
-end
-if test -e /usr/local/opt/asdf/asdf.fish
+else if test -e /opt/homebrew/opt/asdf/asdf.fish
+  source /opt/homebrew/opt/asdf/asdf.fish
+else if test -e /usr/local/opt/asdf/asdf.fish
   source /usr/local/opt/asdf/asdf.fish
+else if test -e /opt/asdf/asdf.fish
+  source /opt/asdf/asdf.fish
 end
 
 # llvm
@@ -65,12 +68,7 @@ if test -e /usr/local/opt/llvm/bin
   set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
 end
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/sls.fish ]; and . /Users/ryo/Documents/project/sandbox/node_modules/tabtab/.completions/sls.fish
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
+# autojump
+if test -e /usr/local/share/autojump/autojump.fish
+  source /usr/local/share/autojump/autojump.fish
+end

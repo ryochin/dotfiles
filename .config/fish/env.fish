@@ -15,6 +15,32 @@ end
 set -x LD_LIBRARY_PATH /usr/local/lib
 set -x LIBRARY_PATH /usr/local/lib
 
+### Homebrew
+
+if [ (uname) = 'Darwin' ]
+  if test -e /opt/homebrew
+    set -x HOMEBREW_HOME (/opt/homebrew/bin/brew --prefix)
+  else
+    set -x HOMEBREW_HOME (/usr/local/bin/brew --prefix)
+  end
+
+  set PATH $HOMEBREW_HOME/bin $HOMEBREW_HOME/sbin $PATH
+else
+  set -x HOMEBREW_HOME /usr/local
+end
+
+### Homebrew: keg-only
+
+set keg_list curl sqlite
+
+for i in $keg_list
+  if test -e /opt/homebrew/opt/$i/bin
+    set PATH /opt/homebrew/opt/$i/bin $PATH
+  else
+    set PATH /usr/local/opt/$i/bin $PATH
+  end
+end
+
 ### Programming Languages
 
 # Perl
@@ -78,21 +104,11 @@ if [ (uname) = 'Darwin' ]
   if test -e /Applications/CotEditor.app/Contents/SharedSupport/bin
     set PATH /Applications/CotEditor.app/Contents/SharedSupport/bin $PATH
   end
-  if test -e $HOME/Applications/Sublime\ Text.app/Contents/SharedSupport/bin
-    set PATH $HOME/Applications/Sublime\ Text.app/Contents/SharedSupport/bin $PATH
+  if test -e /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+    set PATH /Applications/Sublime\ Text.app/Contents/SharedSupport/bin $PATH
   end
-  if test -e $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
-    set PATH $HOME/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin $PATH
-  end
-end
-
-### Homebrew: keg-only
-
-set keg_list curl sqlite
-
-for i in $keg_list
-  if test -e /usr/local/opt/$i/bin
-    set PATH /usr/local/opt/$i/bin $PATH
+  if test -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
+    set PATH /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin $PATH
   end
 end
 
