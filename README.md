@@ -37,6 +37,13 @@ fisher install franciscolourenco/done
 set -U __done_min_cmd_duration 60000
 ```
 
+Nano
+----
+
+```sh
+find /usr/share/nano -name '*.nanorc' | awk '{print "include \"" $1 "\""}' >> ~/.nanorc
+```
+
 License
 -------
 

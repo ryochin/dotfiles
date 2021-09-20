@@ -1,4 +1,4 @@
---theme="ansi-dark"
+--theme="ansi"
 #--paging=never
 --pager="less -R"
 --map-syntax='*.psgi:Perl'

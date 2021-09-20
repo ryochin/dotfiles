@@ -79,7 +79,14 @@ alias t tail
 alias mtail multitail
 
 # pager
-alias n bat
+if test -x $HOMEBREW_HOME/bin/bat
+  alias n $HOMEBREW_HOME/bin/bat
+else if test -x /usr/local/bin/bat
+  alias n /usr/local/bin/bat
+else
+  alias n $PAGER
+end
+
 alias m $PAGER
 
 # git
@@ -119,7 +126,6 @@ alias curl-head 'curl -D - -s -o /dev/null'
 alias null 'cat /dev/null >'
 alias files 'file ./* | egrep -v "(empty|directory|symbolic|Permission denied)" '
 alias xmllint_html 'xmllint --html --noout'
-alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
 alias webserver miniserve
 
 # OS specific
@@ -148,6 +154,9 @@ if [ (uname) = 'Darwin' ]
   alias youtube-dl-mp4 'youtube-dl -k --recode-video mp4'
   alias amesh 'docker run -e TERM_PROGRAM --rm otiai10/amesh'
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
+
+  # etc
+  alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/aws amazon/aws-cli'
 else if [ (uname) = 'Linux' ]
   alias sc systemctl
   alias jc journalctl
