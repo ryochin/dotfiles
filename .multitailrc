@@ -1,2 +1,4 @@
 check_mail:0
-markerline_color:blue
+abbreviate_filesize:1
+markerline_color:magenta
+markerline_timestamp:on

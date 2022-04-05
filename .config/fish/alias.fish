@@ -7,7 +7,7 @@ alias iexm 'iex -S mix'
 alias pd perldoc
 alias pdm 'perldoc -m'
 alias pdl 'perldoc -l'
-alias rc 'rubocop -D'
+alias rc 'bundle exec rubocop -D'
 
 # docker
 alias dk docker
@@ -15,7 +15,7 @@ alias dkc docker-compose
 alias dkm docker-machine
 
 # editor
-if test -x /usr/local/bin/nano -o -x /usr/bin/nano -o -x $HOMEBREW_HOME/nano
+if test -x /usr/local/bin/nano -o -x /usr/bin/nano -o -x /bin/nano -o -x $HOMEBREW_HOME/nano
   export EDITOR=nano
   alias ee $EDITOR
 else if test -x /usr/local/bin/ee -o -x $HOMEBREW_HOME/bin/ee
@@ -77,6 +77,7 @@ alias j 'jobs -l'
 alias s sort
 alias t tail
 alias mtail multitail
+alias mp multipass
 
 # pager
 if test -x $HOMEBREW_HOME/bin/bat
@@ -91,12 +92,14 @@ alias m $PAGER
 
 # git
 alias ggs   'git status'
+alias ggsu  'git status --untracked-files=no'
 alias ggd   'git diff'
 alias ggdw  'git diff -w --word-diff color'
 alias ggdc  'git diff --cached'
 alias ggdcw 'git diff --cached -w --word-diff=color'
 alias ggb   'git branch'
 alias ggl   'git log --name-status'
+alias gglt  'git log --graph --decorate --oneline'
 alias ggg   'git grep -ni'
 alias lg    'lazygit'
 alias gb    git-branch-activity
@@ -110,7 +113,6 @@ alias ctop 'ctop -a'
 alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
-alias rubocop 'rubocop -D'
 alias glances 'glances -1 -t 5 --disable-bg --disable-webui'
 alias pwgen 'pwgen -B'
 alias ncdu "ncdu --color dark -rr -x --exclude .git"
@@ -162,4 +164,10 @@ else if [ (uname) = 'Linux' ]
   alias jc journalctl
 
   alias swapinfo 'swapinfo -k'
+
+  if test -x /usr/bin/fdfind
+    alias ff /usr/bin/fdfind
+  else if test -x /usr/local/bin/fdfind
+    alias ff /usr/local/bin/fdfind
+  end
 end

@@ -14,6 +14,7 @@ install-configs:  ## Install config files
 	$(LINK) $(BASE)/.config/glances/glances.conf ~/.config/glances/
 	$(LINK) $(BASE)/.config/peco ~/.config/
 	$(LINK) $(BASE)/.config/lsd ~/.config/
+	$(LINK) $(BASE)/.config/ncdu ~/.config/
 
 install-files:  ## Install dot files
 	$(LINK) $(BASE)/.colordiffrc ~/
@@ -40,6 +41,7 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.asdfrc ~/
 	$(LINK) $(BASE)/.default-gems ~/
 	$(LINK) $(BASE)/.default-npm-packages ~/
+	$(LINK) $(BASE)/.irbrc ~/
 
 	mkdir -p ~/.bundle
 	$(LINK) $(BASE)/.bundle/config ~/.bundle

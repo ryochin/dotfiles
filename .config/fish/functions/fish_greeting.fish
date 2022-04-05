@@ -12,7 +12,5 @@ function fish_greeting
   end
 
   printf "Welcome to fish on %s%s%s %s(%s)%s\n" "$__fish_color_red" (hostname) "$__fish_prompt_normal" "$__fish_color_blue" (uname -rs) "$__fish_prompt_normal"
-  echo ''
-  echo " (*'-') < Hi!"
-  echo ''
+  echo
 end

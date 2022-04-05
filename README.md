@@ -44,6 +44,14 @@ Nano
 find /usr/share/nano -name '*.nanorc' | awk '{print "include \"" $1 "\""}' >> ~/.nanorc
 ```
 
+git
+---
+
+```sh
+chmod 755 /usr/share/doc/git/contrib/diff-highlight/diff-highlight
+ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/
+```
+
 License
 -------
 
