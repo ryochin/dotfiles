@@ -52,6 +52,10 @@ if test -e $HOME/.conscript/bin
   set PATH $HOME/.conscript/bin $PATH
 end
 
+if test -e "$HOME/Library/Application Support/Coursier/bin"
+  set PATH "$HOME/Library/Application Support/Coursier/bin" $PATH
+end
+
 # Eglang
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 
@@ -69,7 +73,13 @@ end
 
 # Go
 set -x GOPATH $HOME/go
+set PATH $GOPATH/bin $PATH
+
 export GOENV_ROOT="$HOME/.goenv"
+
+if test -e /usr/local/go
+  set PATH /usr/local/go/bin $PATH
+end
 
 # Rust
 if test -e $HOME/.cargo/bin
@@ -89,10 +99,13 @@ if [ (uname) = 'Darwin' ]
   end
 end
 
+### Framework
+
+set -x RAILS_DIFF "colordiff -u"
+
 ### CLI Options
 
 set -x HOMEBREW_AUTO_UPDATE_SECS 21600
-set -x BAT_THEME "Monokai Extended Bright"
 
 ### MySQL
 

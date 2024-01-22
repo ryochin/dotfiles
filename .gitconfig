@@ -1,11 +1,19 @@
 [include]
 	path = ~/.gitconfig.local
 
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = nano -w
+	pager = less -x4
+	excludesfile = /Users/ryo/.gitignore_global
+	autocrlf = false
+
 [init]
 	templatedir = ~/.git-templates
 	defaultBranch = main
 
 [color]
+	ui = true
 	branch = auto
 	diff = auto
 	status = auto
@@ -27,16 +35,6 @@
 	changed = yellow
 	untracked = cyan
 
-[color]
-	ui = true
-
-[core]
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	editor = nano -w
-	pager = less -x4
-	excludesfile = /Users/ryo/.gitignore_global
-	autocrlf = false
-
 [branch]
 	autosetupmerge = true
 
@@ -54,6 +52,9 @@
 	sw = switch
 	rs = restore
 
+	dft = difftool
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+
 	undo = reset --soft HEAD^
 	push-f = push --force-with-lease
 	stash-all = stash save --include-untracked
@@ -63,11 +64,16 @@
 [push]
 	default = current
 
+[merge]
+	ff = false
+	conflictstyle = diff3
+
 [mergetool]
 	keepBackup = true
 
-[merge]
-	ff = false
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [grep]
 	lineNumber = true
@@ -75,6 +81,18 @@
 [diff]
 	algorithm = patience
 	compactionHeuristic = true
+	colorMoved = default
+	tool = difftastic
+
+[difftool]
+	prompt = false
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
 
 [pager]
 	log  = diff-highlight | less -x4
@@ -88,11 +106,6 @@
 
 [gpg]
 	program = gpg1
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[interactive]
-	diffFilter = diff-highlight
+
+[url "https://github.com/"]
+	insteadOf = git://github.com/

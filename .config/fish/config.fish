@@ -57,6 +57,8 @@ if test -e /opt/asdf/asdf.fish
   source /opt/asdf/asdf.fish
 else if test -e /opt/homebrew/opt/asdf/asdf.fish
   source /opt/homebrew/opt/asdf/asdf.fish
+else if test -e /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source /opt/homebrew/opt/asdf/libexec/asdf.fish
 else if test -e /usr/local/opt/asdf/asdf.fish
   source /usr/local/opt/asdf/asdf.fish
 else if test -e /opt/asdf/asdf.fish

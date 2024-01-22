@@ -3,4 +3,7 @@ require 'wirb'
 
 IRB.conf[:SAVE_HISTORY] = 10000
 
-Wirb.start
+#Wirb.start
+
+require "amazing_print"
+AmazingPrint.irb!

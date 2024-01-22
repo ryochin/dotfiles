@@ -26,3 +26,15 @@ indent_style = tab
 [*.rs]
 
 indent_size = 4
+
+[.git/config]
+
+indent_style = tab
+
+[.gitconfig]
+
+indent_style = tab
+
+[.gitconfig.local]
+
+indent_style = tab

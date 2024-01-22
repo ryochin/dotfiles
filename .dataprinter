@@ -1,0 +1,3 @@
+[IO::Socket::INET]
+class.expand = 0
+class.internals = 0

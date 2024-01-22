@@ -15,6 +15,7 @@ install-configs:  ## Install config files
 	$(LINK) $(BASE)/.config/peco ~/.config/
 	$(LINK) $(BASE)/.config/lsd ~/.config/
 	$(LINK) $(BASE)/.config/ncdu ~/.config/
+	$(LINK) $(BASE)/.config/procps ~/.config/
 
 install-files:  ## Install dot files
 	$(LINK) $(BASE)/.colordiffrc ~/
@@ -29,7 +30,6 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.pryrc ~/
 	$(LINK) $(BASE)/.sbtrc ~/
 	$(LINK) $(BASE)/.tigrc ~/
-	$(LINK) $(BASE)/.toprc ~/
 	$(LINK) $(BASE)/.tmux.conf ~/
 	$(LINK) $(BASE)/.replyrc ~/
 	$(LINK) $(BASE)/.boto ~/
@@ -42,6 +42,8 @@ install-files:  ## Install dot files
 	$(LINK) $(BASE)/.default-gems ~/
 	$(LINK) $(BASE)/.default-npm-packages ~/
 	$(LINK) $(BASE)/.irbrc ~/
+	$(LINK) $(BASE)/.curlrc ~/
+	$(LINK) $(BASE)/.terraformrc ~/
 
 	mkdir -p ~/.bundle
 	$(LINK) $(BASE)/.bundle/config ~/.bundle
