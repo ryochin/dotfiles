@@ -4,10 +4,21 @@ set -x LANG en_US.UTF-8
 set -x EDITOR vi
 set -x PAGER "less -R"
 
-set PATH /usr/sbin /usr/local/sbin /usr/libexec /usr/local/libexec $PATH
+set PATH /usr/sbin /usr/local/sbin /usr/libexec /usr/local/libexec $HOME/.local/bin $PATH
 
 if test -e $HOME/bin
   set PATH $HOME/bin $PATH
+end
+
+# OrbStack
+if test -e /Applications/OrbStack.app/Contents/MacOS/bin
+  set PATH /Applications/OrbStack.app/Contents/MacOS/bin $PATH
+  set PATH /Applications/OrbStack.app/Contents/MacOS/xbin $PATH
+end
+
+# Rancher Desktop
+if test -e $HOME/.rd
+  set PATH $HOME/.rd/bin $PATH
 end
 
 ### Library
@@ -84,6 +95,11 @@ end
 # Rust
 if test -e $HOME/.cargo/bin
   set PATH $HOME/.cargo/bin $PATH
+end
+
+# Python
+if test -e $HOME/.rye/shims
+  set PATH $HOME/.rye/shims $PATH
 end
 
 ### texlive

@@ -29,10 +29,10 @@ end
 
 # ls
 if test -x ~/bin/eza -o -x /usr/local/bin/eza -o -x $HOMEBREW_HOME/bin/eza
-  alias d   'eza -lFg     --git --time-style iso'
-  alias l   'eza -lFgah   --git --time-style long-iso'
-  alias lt  'eza -lFg     --git --time-style iso -s modified -r'
-  alias ltr 'eza -lFg     --git --time-style iso -s modified'
+  alias d   'eza -F -lg     --git --time-style iso'
+  alias l   'eza -F -lgah   --git --time-style long-iso'
+  alias lt  'eza -F -lg     --git --time-style iso -s modified -r'
+  alias ltr 'eza -F -lg     --git --time-style iso -s modified'
 else if test -x /usr/local/bin/exa -o -x $HOMEBREW_HOME/bin/exa
   alias d   'exa -lFg     --git --time-style iso'
   alias l   'exa -lFgah   --git --time-style long-iso'
@@ -96,15 +96,13 @@ alias m $PAGER
 # git
 alias ggs   'git status'
 alias ggsu  'git status --untracked-files=no'
-
+alias ggd   'git diff'
+alias ggdw  'git diff -w --word-diff color'
+alias ggdc  'git diff --cached'
+alias ggdcw 'git diff --cached -w --word-diff=color'
 if test -x $HOMEBREW_HOME/bin/difft
-  alias ggd   'git dft'
-  alias ggdc  'git dft --cached'
-else
-  alias ggd   'git diff'
-  alias ggdw  'git diff -w --word-diff color'
-  alias ggdc  'git diff --cached'
-  alias ggdcw 'git diff --cached -w --word-diff=color'
+  alias ggdt   'git dft'
+  alias ggdtc  'git dft --cached'
 end
 
 # alias ggb   'git branch'
@@ -141,6 +139,8 @@ alias xmllint_html 'xmllint --html --noout'
 alias webserver miniserve
 alias kamal "docker run -it --rm -v '$PWD:/workdir' -v '$SSH_AUTH_SOCK:/ssh-agent' \
   -v /var/run/docker.sock:/var/run/docker.sock -e 'SSH_AUTH_SOCK=/ssh-agent' ghcr.io/basecamp/kamal:latest"
+alias trf terraform
+alias tg terragrunt
 
 # OS specific
 if [ (uname) = 'Darwin' ]

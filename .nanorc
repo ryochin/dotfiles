@@ -4,4 +4,6 @@
 
 # set autoindent
 set nowrap
-set suspend
+# set suspend
+# set smooth
+# set linenumbers
