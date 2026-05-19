@@ -13,11 +13,12 @@ alias rc 'bundle exec rubocop -D'
 alias dk docker
 alias dkm docker-machine
 
-if test -x /usr/local/bin/docker-compose
-  alias dkc docker-compose
-else
-  alias dkc 'docker compose'
-end
+#if test -x /opt/homebrew/bin/docker-compose
+#  alias dkc docker-compose
+#else
+#  alias dkc 'docker compose'
+#end
+alias dkc 'docker compose'
 
 # editor
 if test -x /usr/local/bin/nano -o -x /usr/bin/nano -o -x /bin/nano -o -x $HOMEBREW_HOME/nano
@@ -28,11 +29,11 @@ else
 end
 
 # ls
-if test -x ~/bin/eza -o -x /usr/local/bin/eza -o -x $HOMEBREW_HOME/bin/eza
-  alias d   'eza -F -lg     --git --time-style iso'
-  alias l   'eza -F -lgah   --git --time-style long-iso'
-  alias lt  'eza -F -lg     --git --time-style iso -s modified -r'
-  alias ltr 'eza -F -lg     --git --time-style iso -s modified'
+if test -x ~/bin/eza -o -x /usr/local/bin/eza -o -x /usr/sbin/eza -o -x $HOMEBREW_HOME/bin/eza
+  alias d   'eza -F --icons -lg     --git --time-style iso'
+  alias l   'eza -F --icons -lgah   --git --time-style long-iso'
+  alias lt  'eza -F --icons -lg     --git --time-style iso -s modified -r'
+  alias ltr 'eza -F --icons -lg     --git --time-style iso -s modified'
 else if test -x /usr/local/bin/exa -o -x $HOMEBREW_HOME/bin/exa
   alias d   'exa -lFg     --git --time-style iso'
   alias l   'exa -lFgah   --git --time-style long-iso'
@@ -51,6 +52,7 @@ else
 end
 
 alias tree 'tree -CF'
+alias lstr 'lstr --icons --permissions --size --gitignore'
 
 # ps
 alias pa 'ps aux'
@@ -60,17 +62,16 @@ alias psg psgrep
 alias g  'grep'
 alias gg 'grep -an -B 5 -A 5'
 alias gl 'grep --line-buffered'
-alias ag 'ag --color-match "4;33"'
-alias agq 'ag -Q'
 
 # unix commands
 alias c cat
 alias b 'bat -P'
 
+alias colordiff 'colordiff -u'
 if test -x /usr/local/bin/colordiff
   alias diff '/usr/local/bin/colordiff -NBaur'
-else if test -x $HOMEBREW_HOME/opt/colordiff/bin/colordiff
-  alias diff '/opt/homebrew/opt/colordiff/bin/colordiff -NBaur'
+else if test -x $HOMEBREW_HOME/bin/colordiff
+  alias diff "$HOMEBREW_HOME/bin/colordiff -NBaur"
 end
 
 alias ns netstat
@@ -78,7 +79,7 @@ alias mv 'mv -i'
 alias rm 'rm -i'
 alias h head
 alias s sort
-alias t tail
+alias t task
 alias mtail multitail
 alias mp multipass
 
@@ -87,6 +88,8 @@ if test -x $HOMEBREW_HOME/bin/bat
   alias n $HOMEBREW_HOME/bin/bat
 else if test -x /usr/local/bin/bat
   alias n /usr/local/bin/bat
+else if test -x /usr/bin/bat
+  alias n /usr/bin/bat
 else
   alias n $PAGER
 end
@@ -109,7 +112,7 @@ end
 alias ggl   'git log --name-status'
 alias gglt  'git log --graph --decorate --oneline'
 alias ggg   'git grep -ni'
-alias gb    git-branch-activity
+alias gw    'git worktree'
 
 # add options
 alias df 'df -h'
@@ -120,10 +123,10 @@ alias ctop 'ctop -a'
 alias scp 'scp -p'
 alias ffmpeg 'ffmpeg -hide_banner'
 alias ffprobe 'ffprobe -hide_banner'
-alias glances 'glances -1 -t 5 --disable-bg --disable-webui'
+alias glances 'glances --disable-bg --disable-webui'
 alias pwgen 'pwgen -B'
 alias ncdu "ncdu --color dark -rr -x --exclude .git"
-alias duf "duf --only-mp '/,/disk,/Volumes/Cache'"
+alias duf "duf --only-mp '/,/disk,/external,/mnt/usb,/Volumes/Cache,/app/var,/mnt/usb,/var/lib/docker'"
 
 # others
 alias root 'su -l'
@@ -141,6 +144,8 @@ alias kamal "docker run -it --rm -v '$PWD:/workdir' -v '$SSH_AUTH_SOCK:/ssh-agen
   -v /var/run/docker.sock:/var/run/docker.sock -e 'SSH_AUTH_SOCK=/ssh-agent' ghcr.io/basecamp/kamal:latest"
 alias trf terraform
 alias tg terragrunt
+alias td topydo
+alias tm tmux
 
 # OS specific
 if [ (uname) = 'Darwin' ]
@@ -148,6 +153,7 @@ if [ (uname) = 'Darwin' ]
   alias ldd 'otool -L'
   alias notify "terminal-notifier -sound default -message"
   alias done "notify done!"
+  alias beep "afplay /System/Library/Sounds/Funk.aiff"
   alias help tldr
   alias vmstat /usr/bin/vm_stat
   alias strace /usr/bin/dtruss
@@ -162,7 +168,7 @@ if [ (uname) = 'Darwin' ]
 
   # app
   alias firefox 'open -a Firefox'
-  alias chrome 'open -a Chrome'
+  alias chrome 'open -a "Google Chrome"'
   alias vlc 'open -a VLC'
   alias subl 'subl -n'
   alias youtube-dl 'yt-dlp -k'
@@ -171,7 +177,7 @@ if [ (uname) = 'Darwin' ]
   alias stree /Applications/SourceTree.app/Contents/Resources/stree
 
   # etc
-  alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/root awscli:latest'
+  # alias aws 'docker run -it --rm -v ~/.aws:/root/.aws -v $PWD:/root awscli:latest'
 else if [ (uname) = 'Linux' ]
   alias sc systemctl
   alias jc journalctl

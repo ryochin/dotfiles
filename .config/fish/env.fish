@@ -10,6 +10,10 @@ if test -e $HOME/bin
   set PATH $HOME/bin $PATH
 end
 
+if test -e $HOME/.local/bin
+  set PATH $HOME/.local/bin $PATH
+end
+
 # OrbStack
 if test -e /Applications/OrbStack.app/Contents/MacOS/bin
   set PATH /Applications/OrbStack.app/Contents/MacOS/bin $PATH
@@ -67,6 +71,8 @@ if test -e "$HOME/Library/Application Support/Coursier/bin"
   set PATH "$HOME/Library/Application Support/Coursier/bin" $PATH
 end
 
+set -x SBT_OPTS -Xmx2048M
+
 # Eglang
 set -x ERL_AFLAGS "-kernel shell_history enabled"
 
@@ -77,7 +83,8 @@ end
 
 # Java
 if [ (uname) = 'Darwin' ]
-  set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
+  set -x JAVA_HOME (brew --prefix $(brew list --formula | grep '^openjdk@' | sort -V | tail -n1))
+  set PATH $JAVA_HOME/bin $PATH
 else if [ (uname) = 'Linux' ]
   set -x JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64
 end
@@ -113,6 +120,9 @@ if [ (uname) = 'Darwin' ]
   if test -e /usr/local/texlive/2020/bin/x86_64-darwin
     set PATH /usr/local/texlive/2020/bin/x86_64-darwin $PATH
   end
+  if test -e /usr/local/texlive/2024/bin/universal-darwin
+    set PATH /usr/local/texlive/2024/bin/universal-darwin $PATH
+  end
 end
 
 ### Framework
@@ -122,6 +132,7 @@ set -x RAILS_DIFF "colordiff -u"
 ### CLI Options
 
 set -x HOMEBREW_AUTO_UPDATE_SECS 21600
+set -x RIPGREP_CONFIG_PATH $HOME/.ripgreprc
 
 ### MySQL
 
@@ -139,6 +150,9 @@ if [ (uname) = 'Darwin' ]
   if test -e /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
     set PATH /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin $PATH
   end
+  if test -e /Applications/Ollama.app/Contents/MacOS
+    set PATH /Applications/Ollama.app/Contents/MacOS $PATH
+  end
 end
 
 ### Etc.
@@ -148,5 +162,8 @@ if test -e /opt/samba/bin
 end
 
 if [ (uname) = 'Darwin' ]
-  set -x CLOUDSDK_PYTHON $HOME/.asdf/shims/python2.7
+  set -x CLOUDSDK_PYTHON $HOME/.asdf/shims/python3
 end
+
+# set -x CLAUDE_CODE_EFFORT_LEVEL max
+set -x CLAUDE_CODE_EFFORT_LEVEL high

@@ -11,11 +11,34 @@ Fish
 ### fisher + plugins
 
 ```sh
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+curl -L https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 fisher install jethrokuan/z
 fisher install 0rax/fish-bd
 
 fish_update_completions
+```
+
+### Tide (prompt)
+
+```sh
+fisher install IlanCosman/tide@v6
+```
+
+```sh
+tide configure --auto \
+  --style=Rainbow \
+  --prompt_colors='True color' \
+  --show_time='24-hour format' \
+  --rainbow_prompt_separators=Angled \
+  --powerline_prompt_heads=Sharp \
+  --powerline_prompt_tails=Flat \
+  --powerline_prompt_style='Two lines, character and frame' \
+  --prompt_connection=Dotted \
+  --powerline_right_prompt_frame=No \
+  --prompt_connection_andor_frame_color=Light \
+  --prompt_spacing=Sparse \
+  --icons='Many icons' \
+  --transient=Yes
 ```
 
 ### fzf
@@ -42,6 +65,9 @@ Nano
 
 ```sh
 find /usr/share/nano -name '*.nanorc' | awk '{print "include \"" $1 "\""}' >> ~/.nanorc
+
+# homebrew
+find /opt/homebrew/share/nano/ -name '*.nanorc' | awk '{print "include \"" $1 "\""}' >> ~/.nanorc
 ```
 
 git

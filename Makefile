@@ -16,6 +16,8 @@ install-configs:  ## Install config files
 	$(LINK) $(BASE)/.config/lsd ~/.config/
 	$(LINK) $(BASE)/.config/ncdu ~/.config/
 	$(LINK) $(BASE)/.config/procps ~/.config/
+	$(LINK) $(BASE)/.config/yazi ~/.config/
+	$(LINK) $(BASE)/.config/git ~/.config/
 
 install-files:  ## Install dot files
 	$(LINK) $(BASE)/.colordiffrc ~/

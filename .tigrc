@@ -15,6 +15,7 @@ set main-view = \
 
 set pager-view = line-number:yes,interval=10 text
 
+set main-view-date-use-author = yes
 set commit-order = date
 #set line-graphics = utf-8
 set split-view-height = 75%
@@ -24,7 +25,7 @@ set tab-size = 4
 set show-changes = no
 set diff-options = -m --first-parent
 set reference-format = (branch) [tag]
-set diff-highlight = true
+# set diff-highlight = true
 set mouse = true
 
 bind generic ~      :goto %(commit)^

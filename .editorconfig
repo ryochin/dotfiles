@@ -27,6 +27,9 @@ indent_style = tab
 
 indent_size = 4
 
+[*.swift]
+indent_size = 4
+
 [.git/config]
 
 indent_style = tab

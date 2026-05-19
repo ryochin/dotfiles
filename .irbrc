@@ -1,9 +1,11 @@
 require 'irb/completion'
-require 'wirb'
 
 IRB.conf[:SAVE_HISTORY] = 10000
 
-#Wirb.start
-
-require "amazing_print"
-AmazingPrint.irb!
+begin
+  require 'amazing_print'
+rescue LoadError
+else
+  AmazingPrint.irb!
+  AmazingPrint.rdbg!
+end
